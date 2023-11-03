@@ -2,13 +2,13 @@
     Module: Sparce Memory Top Module
 */
 module sparceMemTop (interface mem_if);
-    logic [BC - 1: 0][7: 0] MEM [*];
+    logic [sparceMemPkg::BC - 1: 0][7: 0] MEM [*];
 
-    logic [BADDR-1 : 0] baddr_wr;
-    logic [BADDR-1 : 0] baddr_rd;
+    logic [sparceMemPkg::BADDR-1 : 0] baddr_wr;
+    logic [sparceMemPkg::BADDR-1 : 0] baddr_rd;
 
-    assign baddr_rd = read_address[BADDR-1:0];
-    assign baddr_wr = write_address[BADDR-1:0];
+    assign baddr_rd = read_address[sparceMemPkg::BADDR-1:0];
+    assign baddr_wr = write_address[sparceMemPkg::BADDR-1:0];
 
     always_ff @(mem_if.clk, mem_if.nrst) begin : read_block
         if (!mem_if.nrst) begin
